@@ -14,3 +14,5 @@ function addBookToLibrary(book) {
 function displayBooks(array) {
   return array.forEach((book) => console.log(book));
 }
+
+const list = document.querySelector(".book-list");
