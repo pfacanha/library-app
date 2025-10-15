@@ -7,9 +7,18 @@ html {
 *::after {
   box-sizing: inherit;
 }
+
+:root {
+  --dark-color: #000500;
+  --mdark-color: #3f3a36;
+  --medium-color: #92817a;
+  --mbright-color: #f1dabf;
+  --bright-color: #fffbff;
+}
+
 body {
   margin: 0;
 }
 h1 {
-  color: blue;
+  color: var(--mdark-color);
 }
