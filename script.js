@@ -9,7 +9,7 @@ const book2 = new Book("Lord of The Rings", "J.R.R. Tolkien");
 const book3 = new Book("Lord of The Rings II", "J.R.R. Tolkien");
 
 const myLibrary = [book1, book2, book3];
-const tableContainer = document.querySelector("table-container");
+const tableContainer = document.querySelector(".table-container");
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
@@ -27,6 +27,7 @@ function displayBooks(array, table) {
     const authorTitle = document.createElement("td");
     authorTitle.textContent = book.author;
 
+    newRow.appendChild(id);
     newRow.appendChild(movieTitle);
     newRow.appendChild(authorTitle);
 
@@ -34,5 +35,4 @@ function displayBooks(array, table) {
   });
 }
 
-const myList = document.querySelector(".book-list");
 displayBooks(myLibrary, tableContainer);
