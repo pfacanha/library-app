@@ -27,6 +27,17 @@ li {
   list-style-type: none;
 }
 
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid black;
+  text-align: center;
+}
+
 #wrapper {
   display: flex;
   flex-direction: column;
