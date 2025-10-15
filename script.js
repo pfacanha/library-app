@@ -16,7 +16,20 @@ function addBookToLibrary(book) {
 }
 
 function displayBooks(array, table) {
-  return array.forEach((book) => {
+  const thead = document.createElement("thead");
+  const headRow = document.createElement("tr");
+
+  const id = document.createElement("td");
+  const title = document.createElement("td");
+  const author = document.createElement("td");
+  headRow.appendChild(id);
+  headRow.appendChild(title);
+  headRow.appendChild(author);
+
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+
+  array.forEach((book) => {
     const newRow = document.createElement("tr");
     const id = document.createElement("td");
     id.textContent = book.id;
@@ -33,6 +46,7 @@ function displayBooks(array, table) {
 
     table.appendChild(newRow);
   });
+  return table;
 }
 
 displayBooks(myLibrary, tableContainer);
