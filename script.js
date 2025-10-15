@@ -11,8 +11,16 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
-function displayBooks(array) {
-  return array.forEach((book) => console.log(book));
+function displayBooks(array, list) {
+  return array.forEach((listText) => {
+    const listItem = document.createElement("li");
+
+    listItem.textContent = listText;
+
+    list.appendChild(listItem);
+  });
 }
 
-const list = document.querySelector(".book-list");
+const myList = document.querySelector(".book-list");
+
+displayBooks(myLibrary, myList);
