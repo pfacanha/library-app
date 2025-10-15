@@ -26,3 +26,13 @@ h1 {
 li {
   list-style-type: none;
 }
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px auto;
+  padding: 20px;
+  width: 1100px;
+  background-color: var(--mbright-color);
+}
