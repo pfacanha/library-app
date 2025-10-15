@@ -16,36 +16,42 @@ function addBookToLibrary(book) {
 }
 
 function displayBooks(array, table) {
+  table.textContent = "";
+
+  // THEAD
   const thead = document.createElement("thead");
-  const headRow = document.createElement("tr");
+  const headerRow = document.createElement("tr");
 
-  const id = document.createElement("td");
-  const title = document.createElement("td");
-  const author = document.createElement("td");
-  headRow.appendChild(id);
-  headRow.appendChild(title);
-  headRow.appendChild(author);
+  const thId = document.createElement("th");
+  thId.textContent = "ID";
+  const thTitle = document.createElement("th");
+  thTitle.textContent = "Title";
+  const thAuthor = document.createElement("th");
+  thAuthor.textContent = "Author";
 
-  thead.appendChild(headRow);
-  table.appendChild(thead);
+  headerRow.append(thId, thTitle, thAuthor);
+  thead.appendChild(headerRow);
+
+  // TBODY
+  const tbody = document.createElement("tbody");
 
   array.forEach((book) => {
-    const newRow = document.createElement("tr");
-    const id = document.createElement("td");
-    id.textContent = book.id;
+    const row = document.createElement("tr");
 
-    const movieTitle = document.createElement("td");
-    movieTitle.textContent = book.title;
+    const tdId = document.createElement("td");
+    tdId.textContent = book.id;
 
-    const authorTitle = document.createElement("td");
-    authorTitle.textContent = book.author;
+    const tdTitle = document.createElement("td");
+    tdTitle.textContent = book.title;
 
-    newRow.appendChild(id);
-    newRow.appendChild(movieTitle);
-    newRow.appendChild(authorTitle);
+    const tdAuthor = document.createElement("td");
+    tdAuthor.textContent = book.author;
 
-    table.appendChild(newRow);
+    row.append(tdId, tdTitle, tdAuthor);
+    tbody.appendChild(row);
   });
+
+  table.append(thead, tbody);
   return table;
 }
 
