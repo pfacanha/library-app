@@ -4,15 +4,13 @@ function Book(title, author) {
   this.title = title;
   this.author = author;
 }
-const book1 = new Book("Harry Potter", "J.K Rowling");
-const book2 = new Book("Lord of The Rings", "J.R.R. Tolkien");
-const book3 = new Book("Lord of The Rings II", "J.R.R. Tolkien");
 
-const myLibrary = [book1, book2, book3];
+const myLibrary = [];
 const tableContainer = document.querySelector(".table-container");
 
-function addBookToLibrary(book) {
-  myLibrary.push(book);
+function addBookToLibrary(title, author) {
+  const newBook = new Book(title, author);
+  myLibrary.push(newBook);
 }
 
 function displayBooks(array, table) {
