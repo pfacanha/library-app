@@ -5,8 +5,11 @@ function Book(title, author) {
   this.author = author;
 }
 
-const myLibrary = [];
+const myLibrary = []; // initially set to zero in order to test options
 const tableContainer = document.querySelector(".table-container");
+
+addBookToLibrary("Harry Potter - Phylosophal Stone", "J.K Rowling");
+addBookToLibrary("Harry Potter - Chamber Secret", "J.K Rowling");
 
 function addBookToLibrary(title, author) {
   const newBook = new Book(title, author);
