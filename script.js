@@ -9,6 +9,13 @@ const addBook = document.querySelector(".add-book");
 const form = document.querySelector(".form");
 
 addBook.addEventListener("click", function () {
+  const existingForm = document.querySelector(".book-form");
+
+  if (existingForm) {
+    existingForm.remove();
+    addBook.textContent = "Add Book";
+    return;
+  }
   form.textContent = "";
 
   const newForm = document.createElement("form");
@@ -45,15 +52,11 @@ addBook.addEventListener("click", function () {
   authorInput.classList.add("book-input");
   submitButton.classList.add("book-submit");
 
-  addBook.remove();
+  addBook.textContent = "Return to Main";
   form.append(newForm);
 
-  // add eventListener for the submit button
-
-  /* Continue on November 4, 2025 
-  TODO: Finish the function below
-  * 1) Get inputs and send it to the addBookToLibrary()
-  */
+  // Continue on November 4, 2025
+  // TODO: Get inputs and send it to the addBookToLibrary()
   form.addEventListener("submit", function () {
     // e.preventDefault();
   });
