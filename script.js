@@ -6,10 +6,10 @@ function Book(title, author) {
 }
 const myLibrary = []; // array that will store books
 const addBook = document.querySelector(".add-book");
-const myForm = document.querySelector(".my-form");
+const form = document.querySelector(".form");
 
 addBook.addEventListener("click", function () {
-  myForm.textContent = "";
+  form.textContent = "";
 
   const newForm = document.createElement("form");
   newForm.method = "POST";
@@ -25,19 +25,29 @@ addBook.addEventListener("click", function () {
   authorLabel.textContent = "Author:";
   const authorInput = document.createElement("input");
   authorInput.type = "text";
-  authorInput.id = "title";
-  authorInput.name = "title";
+  authorInput.id = "author";
+  authorInput.name = "author";
 
   const submitButton = document.createElement("button");
   submitButton.type = "submit";
   submitButton.textContent = "Submit";
 
-  newForm.appendChild(title);
-  newForm.appendChild(author);
+  newForm.appendChild(titleLabel);
   newForm.appendChild(titleInput);
+  newForm.appendChild(authorLabel);
+  newForm.appendChild(authorInput);
   newForm.appendChild(submitButton);
 
-  myForm.append(newForm);
+  newForm.classList.add("book-form");
+  titleLabel.classList.add("book-label");
+  titleInput.classList.add("book-input");
+  authorLabel.classList.add("book-label");
+  authorInput.classList.add("book-input");
+  submitButton.classList.add("book-submit");
+
+  form.append(newForm);
+
+  // add eventListener for the submit button
 });
 // const tableContainer = document.querySelector(".table-container");
 
