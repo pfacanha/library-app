@@ -43,6 +43,25 @@ th {
   text-align: center;
 }
 
+h1 {
+  flex: 1;
+}
+
+button {
+  margin: 0 10px;
+  flex: 1;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+
+  width: 200px;
+}
+.new-book {
+  margin: 0 auto;
+
+  width: 50%;
+}
 #wrapper {
   display: flex;
   flex-direction: column;
