@@ -4,19 +4,15 @@ function Book(title, author) {
   this.title = title;
   this.author = author;
 }
-
-const myLibrary = []; // initially set to zero in order to test options
-const tableContainer = document.querySelector(".table-container");
-
-addBookToLibrary("Harry Potter - Phylosophal Stone", "J.K Rowling");
-addBookToLibrary("Harry Potter - Chamber Secret", "J.K Rowling");
+const myLibrary = []; // initially set to zero in order to test "Book Objects"
+// const tableContainer = document.querySelector(".table-container");
 
 function addBookToLibrary(title, author) {
   const newBook = new Book(title, author);
   myLibrary.push(newBook);
 }
 
-function displayBooks(array, table) {
+function displayBooks(arr, table) {
   table.textContent = "";
 
   // THEAD
@@ -36,7 +32,7 @@ function displayBooks(array, table) {
   // TBODY
   const tbody = document.createElement("tbody");
 
-  array.forEach((book) => {
+  arr.forEach((book) => {
     const row = document.createElement("tr");
 
     const tdId = document.createElement("td");
