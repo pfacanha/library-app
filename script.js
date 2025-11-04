@@ -4,7 +4,8 @@ function Book(title, author) {
   this.title = title;
   this.author = author;
 }
-const myLibrary = []; // initially set to zero in order to test "Book Objects"
+const myLibrary = []; // array that will store books
+
 // const tableContainer = document.querySelector(".table-container");
 
 function addBookToLibrary(title, author) {
@@ -52,4 +53,4 @@ function displayBooks(arr, table) {
   return table;
 }
 
-displayBooks(myLibrary, tableContainer);
+// displayBooks(myLibrary, tableContainer);
