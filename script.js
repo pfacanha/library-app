@@ -5,7 +5,40 @@ function Book(title, author) {
   this.author = author;
 }
 const myLibrary = []; // array that will store books
+const addBook = document.querySelector(".add-book");
+const myForm = document.querySelector(".my-form");
 
+addBook.addEventListener("click", function () {
+  myForm.textContent = "";
+
+  const newForm = document.createElement("form");
+  newForm.method = "POST";
+
+  const titleLabel = document.createElement("label");
+  titleLabel.textContent = "Title:";
+  const titleInput = document.createElement("input");
+  titleInput.type = "text";
+  titleInput.id = "title";
+  titleInput.name = "title";
+
+  const authorLabel = document.createElement("label");
+  authorLabel.textContent = "Author:";
+  const authorInput = document.createElement("input");
+  authorInput.type = "text";
+  authorInput.id = "title";
+  authorInput.name = "title";
+
+  const submitButton = document.createElement("button");
+  submitButton.type = "submit";
+  submitButton.textContent = "Submit";
+
+  newForm.appendChild(title);
+  newForm.appendChild(author);
+  newForm.appendChild(titleInput);
+  newForm.appendChild(submitButton);
+
+  myForm.append(newForm);
+});
 // const tableContainer = document.querySelector(".table-container");
 
 function addBookToLibrary(title, author) {
