@@ -48,6 +48,14 @@ addBook.addEventListener("click", function () {
   form.append(newForm);
 
   // add eventListener for the submit button
+
+  /* Continue on November 4, 2025 
+  TODO: Finish the function below
+  * 1) Get inputs and send it to the addBookToLibrary()
+  */
+  form.addEventListener("submit", function () {
+    e.preventDefault();
+  });
 });
 // const tableContainer = document.querySelector(".table-container");
 
