@@ -45,6 +45,7 @@ addBook.addEventListener("click", function () {
   authorInput.classList.add("book-input");
   submitButton.classList.add("book-submit");
 
+  addBook.remove();
   form.append(newForm);
 
   // add eventListener for the submit button
@@ -54,7 +55,7 @@ addBook.addEventListener("click", function () {
   * 1) Get inputs and send it to the addBookToLibrary()
   */
   form.addEventListener("submit", function () {
-    e.preventDefault();
+    // e.preventDefault();
   });
 });
 // const tableContainer = document.querySelector(".table-container");
