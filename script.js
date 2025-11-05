@@ -56,10 +56,16 @@ addBook.addEventListener("click", function () {
   addBook.textContent = "Return to Main";
   form.append(newForm);
 
-  // Continue on November 4, 2025
   // TODO: Get inputs and send it to the addBookToLibrary()
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+
+    // get book title
+    const currentTitle = titleInput.textContent;
+    // get book author
+    const currentAuthor = authorInput.textContent;
+    // call addBookToLibrary();
+    addBookToLibrary(currentTitle, currentAuthor);
   });
 });
 
@@ -108,4 +114,4 @@ function displayBooks(arr, table) {
   return table;
 }
 
-// displayBooks(myLibrary, tableContainer);
+displayBooks(myLibrary, tableContainer);
