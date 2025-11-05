@@ -5,19 +5,19 @@ function Book(title, author) {
   this.author = author;
 }
 const myLibrary = []; // array that will store books
-const addBook = document.querySelector(".add-book");
-const form = document.querySelector(".form");
+const addButton = document.querySelector(".add-button");
+const div = document.querySelector(".div");
 const tableContainer = document.querySelector(".table-container");
 
-addBook.addEventListener("click", function (e) {
+addButton.addEventListener("click", function (e) {
   const existingForm = document.querySelector(".book-form");
 
   if (existingForm) {
     existingForm.remove();
-    addBook.textContent = "Add Book";
+    addButton.textContent = "Add Book";
     return;
   }
-  form.textContent = "";
+  div.textContent = "";
 
   const innerForm = document.createElement("form");
   innerForm.method = "POST";
@@ -54,8 +54,8 @@ addBook.addEventListener("click", function (e) {
   authorInput.classList.add("book-input");
   submitButton.classList.add("book-submit");
 
-  addBook.textContent = "Return to Main";
-  form.append(innerForm);
+  addButton.textContent = "Return to Main";
+  div.append(innerForm);
 
   innerForm.addEventListener("submit", function (e) {
     e.preventDefault();
