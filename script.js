@@ -59,14 +59,15 @@ addBook.addEventListener("click", function () {
   // TODO: Get inputs and send it to the addBookToLibrary()
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-
     // get book title
     const currentTitle = titleInput.value;
     console.log(currentTitle);
+    console.log(typeof currentTitle);
     // get book author
     const currentAuthor = authorInput.value;
     // call addBookToLibrary();
     addBookToLibrary(currentTitle, currentAuthor);
+    displayBooks(myLibrary, tableContainer);
     tableContainer.hidden = false;
   });
 });
@@ -115,5 +116,3 @@ function displayBooks(arr, table) {
   table.append(thead, tbody);
   return table;
 }
-
-displayBooks(myLibrary, tableContainer);
