@@ -9,7 +9,7 @@ const addBook = document.querySelector(".add-book");
 const form = document.querySelector(".form");
 const tableContainer = document.querySelector(".table-container");
 
-addBook.addEventListener("click", function () {
+addBook.addEventListener("click", function (e) {
   const existingForm = document.querySelector(".book-form");
 
   if (existingForm) {
@@ -19,8 +19,8 @@ addBook.addEventListener("click", function () {
   }
   form.textContent = "";
 
-  const newForm = document.createElement("form");
-  newForm.method = "POST";
+  const innerForm = document.createElement("form");
+  innerForm.method = "POST";
 
   const titleLabel = document.createElement("label");
   titleLabel.textContent = "Title:";
@@ -40,13 +40,14 @@ addBook.addEventListener("click", function () {
   submitButton.type = "submit";
   submitButton.textContent = "Submit";
 
-  newForm.appendChild(titleLabel);
-  newForm.appendChild(titleInput);
-  newForm.appendChild(authorLabel);
-  newForm.appendChild(authorInput);
-  newForm.appendChild(submitButton);
+  innerForm.appendChild(titleLabel);
+  innerForm.appendChild(titleInput);
+  innerForm.appendChild(authorLabel);
+  innerForm.appendChild(authorInput);
+  innerForm.appendChild(submitButton);
 
-  newForm.classList.add("book-form");
+  innerForm.classList.add("book-form");
+  innerForm.style.marginBottom = "10px";
   titleLabel.classList.add("book-label");
   titleInput.classList.add("book-input");
   authorLabel.classList.add("book-label");
@@ -54,21 +55,18 @@ addBook.addEventListener("click", function () {
   submitButton.classList.add("book-submit");
 
   addBook.textContent = "Return to Main";
-  form.append(newForm);
+  form.append(innerForm);
 
-  // TODO: Get inputs and send it to the addBookToLibrary()
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    // get book title
     const currentTitle = titleInput.value;
-    console.log(currentTitle);
-    console.log(typeof currentTitle);
-    // get book author
     const currentAuthor = authorInput.value;
-    // call addBookToLibrary();
+
     addBookToLibrary(currentTitle, currentAuthor);
+
+    titleInput.value = "";
+    authorInput.value = "";
     displayBooks(myLibrary, tableContainer);
-    tableContainer.hidden = false;
   });
 });
 
@@ -79,7 +77,7 @@ function addBookToLibrary(title, author) {
 
 function displayBooks(arr, table) {
   table.textContent = "";
-  table.style.marginBottom = "10px";
+
   // THEAD
   const thead = document.createElement("thead");
   const headerRow = document.createElement("tr");
