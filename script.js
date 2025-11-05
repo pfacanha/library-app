@@ -57,15 +57,14 @@ addBook.addEventListener("click", function (e) {
   addBook.textContent = "Return to Main";
   form.append(innerForm);
 
-  form.addEventListener("submit", function (e) {
+  innerForm.addEventListener("submit", function (e) {
     e.preventDefault();
-    const currentTitle = titleInput.value;
-    const currentAuthor = authorInput.value;
+    const currentTitle = titleInput.value.trim();
+    const currentAuthor = authorInput.value.trim();
 
     addBookToLibrary(currentTitle, currentAuthor);
 
-    titleInput.value = "";
-    authorInput.value = "";
+    innerForm.reset();
     displayBooks(myLibrary, tableContainer);
   });
 });
