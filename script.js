@@ -1,5 +1,5 @@
 function Book(title, author) {
-  const id = crypto.randomUUID();
+  const id = Math.floor(Math.random() * 1000) + 1;
   this.id = id;
   this.title = title;
   this.author = author;
@@ -79,7 +79,7 @@ function addBookToLibrary(title, author) {
 
 function displayBooks(arr, table) {
   table.textContent = "";
-
+  table.style.marginBottom = "10px";
   // THEAD
   const thead = document.createElement("thead");
   const headerRow = document.createElement("tr");
