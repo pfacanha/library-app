@@ -4,12 +4,12 @@ function Book(title, author) {
   this.title = title;
   this.author = author;
 }
-const myLibrary = []; // array that will store books
+const myLibrary = [];
 const addButton = document.querySelector(".add-button");
 const div = document.querySelector(".div");
 const tableContainer = document.querySelector(".table-container");
 
-addButton.addEventListener("click", function (e) {
+addButton.addEventListener("click", function () {
   const existingForm = document.querySelector(".book-form");
 
   if (existingForm) {
@@ -62,8 +62,9 @@ addButton.addEventListener("click", function (e) {
     const currentTitle = titleInput.value.trim();
     const currentAuthor = authorInput.value.trim();
 
-    addBookToLibrary(currentTitle, currentAuthor);
+    if (!currentTitle || !currentAuthor) return;
 
+    addBookToLibrary(currentTitle, currentAuthor);
     innerForm.reset();
     displayBooks(myLibrary, tableContainer);
   });
@@ -87,8 +88,10 @@ function displayBooks(arr, table) {
   thTitle.textContent = "Title";
   const thAuthor = document.createElement("th");
   thAuthor.textContent = "Author";
+  const thActions = document.createElement("th");
+  thActions.textContent = "Actions";
 
-  headerRow.append(thId, thTitle, thAuthor);
+  headerRow.append(thId, thTitle, thAuthor, thActions);
   thead.appendChild(headerRow);
 
   // TBODY
@@ -106,7 +109,14 @@ function displayBooks(arr, table) {
     const tdAuthor = document.createElement("td");
     tdAuthor.textContent = book.author;
 
-    row.append(tdId, tdTitle, tdAuthor);
+    const tdActions = document.createElement("td");
+    const delBtn = document.createElement("button");
+    delBtn.type = "button";
+    delBtn.className = "delete-btn";
+    delBtn.textContent = "Delete";
+    tdActions.appendChild(delBtn);
+
+    row.append(tdId, tdTitle, tdAuthor, tdActions);
     tbody.appendChild(row);
   });
 

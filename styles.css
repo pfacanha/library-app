@@ -64,12 +64,12 @@ button {
   width: 200px;
 }
 
-.form {
+.div {
   display: flex;
   justify-content: center;
 }
 
-.add-book {
+.add-button {
   margin: 15px auto;
   width: 250px;
 }
