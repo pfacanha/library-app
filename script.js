@@ -7,7 +7,7 @@ function Book(title, author) {
 const myLibrary = []; // array that will store books
 const addBook = document.querySelector(".add-book");
 const form = document.querySelector(".form");
-// const tableContainer = document.querySelector(".table-container");
+const tableContainer = document.querySelector(".table-container");
 
 addBook.addEventListener("click", function () {
   const existingForm = document.querySelector(".book-form");
@@ -61,11 +61,13 @@ addBook.addEventListener("click", function () {
     e.preventDefault();
 
     // get book title
-    const currentTitle = titleInput.textContent;
+    const currentTitle = titleInput.value;
+    console.log(currentTitle);
     // get book author
-    const currentAuthor = authorInput.textContent;
+    const currentAuthor = authorInput.value;
     // call addBookToLibrary();
     addBookToLibrary(currentTitle, currentAuthor);
+    tableContainer.hidden = false;
   });
 });
 
