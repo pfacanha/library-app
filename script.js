@@ -7,6 +7,7 @@ function Book(title, author) {
 const myLibrary = []; // array that will store books
 const addBook = document.querySelector(".add-book");
 const form = document.querySelector(".form");
+// const tableContainer = document.querySelector(".table-container");
 
 addBook.addEventListener("click", function () {
   const existingForm = document.querySelector(".book-form");
@@ -57,11 +58,10 @@ addBook.addEventListener("click", function () {
 
   // Continue on November 4, 2025
   // TODO: Get inputs and send it to the addBookToLibrary()
-  form.addEventListener("submit", function () {
-    // e.preventDefault();
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
   });
 });
-// const tableContainer = document.querySelector(".table-container");
 
 function addBookToLibrary(title, author) {
   const newBook = new Book(title, author);
