@@ -5,5 +5,10 @@ function Book(title, author) {
   this.author = author;
 }
 const myLibrary = [];
+
+// DOM elements
 const add = document.querySelector(".add");
 const display = document.querySelector(".display");
+
+// actions
+add.addEventListener("click", function () {});
