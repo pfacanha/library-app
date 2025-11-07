@@ -111,8 +111,6 @@ function displayBooks(arr, table) {
 
     const tdActions = document.createElement("td");
     const delBtn = document.createElement("button");
-    delBtn.type = "button";
-    delBtn.className = "delete-btn";
     delBtn.textContent = "Delete";
     tdActions.appendChild(delBtn);
 
