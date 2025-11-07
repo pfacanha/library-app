@@ -9,7 +9,7 @@ const myLibrary = ["hello", "world"];
 
 // DOM elements
 const add = document.querySelector(".add");
-const display = document.querySelector(".display");
+const box = document.querySelector(".display");
 
 // actions
 add.addEventListener("click", function () {
@@ -17,11 +17,21 @@ add.addEventListener("click", function () {
 
   // labels
   const titleLabel = document.createElement("label");
+  titleLabel.textContent = "Title: ";
   const authorLabel = document.createElement("label");
+  authorLabel.textContent = "Author: ";
 
   // inputs
-  const titleInputs = document.createElement("input");
-  const authorInputs = document.createElement("input");
+  const titleInput = document.createElement("input");
+  titleInput.type = "text";
+  const authorInput = document.createElement("input");
+  authorInput.type = "text";
+
+  // links
+  titleLabel.setAttribute("for", titleInput);
+  titleLabel.setAttribute("for", authorInput);
+  form.append(titleLabel, authorLabel, titleInput, authorInput);
+  box.appendChild(form);
 });
 
 function addBookToLibrary(title, author, isRead) {
