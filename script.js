@@ -24,23 +24,32 @@ add.addEventListener("click", function () {
   // inputs
   const titleInput = document.createElement("input");
   titleInput.type = "text";
+  titleInput.id = "title";
   const authorInput = document.createElement("input");
   authorInput.type = "text";
+  authorInput.id = "author";
 
-  // links
+  // button
+  const btn = document.createElement("button");
+  btn.textContent = "Submit";
+  btn.type = "submit";
+
   titleLabel.setAttribute("for", titleInput);
-  titleLabel.setAttribute("for", authorInput);
-  form.append(titleLabel, authorLabel, titleInput, authorInput);
+  authorLabel.setAttribute("for", authorInput);
+
+  form.append(titleLabel, titleInput, authorLabel, authorInput, btn);
   box.appendChild(form);
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const currentTitle = titleInput.value;
+    const currentAuthor = authorInput.value;
+    console.log(currentTitle);
+    console.log(currentAuthor);
+  });
 });
 
 function addBookToLibrary(title, author, isRead) {
   const newBook = new Book(title, author, isRead);
   myLibrary.push(newBook);
 }
-
-// function displayBooks() {
-//   myLibrary.forEach((book) => {
-//     console.log(book);
-//   });
-// }
