@@ -19,9 +19,11 @@ addBookToLibrary("Heart of Darkness", "Joseph Conrad", true);
 addBookToLibrary("Lord of The Rings", "J.R.R Tolkien", false);
 
 function displayBooks() {
+  viewBooks.textContent = "";
+
   for (let i = 0; i < myLibrary.length; ++i) {
     let curr = myLibrary[i];
-    const currBook = document.createElement("div");
+    const bookCard = document.createElement("div");
 
     const author = document.createElement("p");
     author.textContent = `Author: ${curr.author}`;
@@ -32,10 +34,10 @@ function displayBooks() {
     const isRead = document.createElement("p");
     isRead.textContent = `isRead: ${curr.isRead}`;
 
-    currBook.classList.add("card");
+    bookCard.classList.add("card");
 
-    currBook.append(author, title, isRead);
-    viewBooks.append(currBook);
+    bookCard.append(author, title, isRead);
+    viewBooks.append(bookCard);
   }
 }
 
