@@ -1,9 +1,19 @@
-const myLibrary = [firstBook, secondBook, thirdBook];
+const myLibrary = [];
 
-function Book() {
-  // the constructor...
+function Book(title, author) {
+  this.id = crypto.randomUUID();
+  this.title = title;
+  this.author = author;
 }
 
-function addBookToLibrary() {
-  // take params, create a book then store it in the array
+function addBookToLibrary(title, author) {
+  const book = new Book(title, author);
+  myLibrary.push(book);
+  return book;
 }
+
+addBookToLibrary("Harry Potter", "J.K. Rowling");
+
+console.log(myLibrary);
+console.log(Array.prototype);
+console.log(Book.prototype);
