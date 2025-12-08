@@ -2,6 +2,17 @@ html {
   box-sizing: border-box;
 }
 
+/* color palette */
+:root {
+  --primary-color: #007bff; /* Blue */
+  --secondary-color: #6c757d; /* Gray */
+  --accent-color: #28a745; /* Green */
+  --text-dark: #343a40; /* Dark gray for text */
+  --text-light: #f8f9fa; /* Light gray for text */
+  --background-light: #ffffff; /* White background */
+  --background-dark: #343a40; /* Dark background */
+}
+
 *,
 *::after,
 *::before {
@@ -9,8 +20,18 @@ html {
 }
 
 #wrapper {
+  /* flex properties */
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  /* styling */
+  border: 1px solid black;
+  border-radius: 20px;
+
+  /* layout */
+  padding: 20px;
+
+  /* dimensions */
   max-width: 1020px;
 }
