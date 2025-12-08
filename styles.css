@@ -4,13 +4,18 @@ html {
 
 /* color palette */
 :root {
-  --primary-color: #007bff; /* Blue */
-  --secondary-color: #6c757d; /* Gray */
-  --accent-color: #28a745; /* Green */
-  --text-dark: #343a40; /* Dark gray for text */
-  --text-light: #f8f9fa; /* Light gray for text */
-  --background-light: #ffffff; /* White background */
-  --background-dark: #343a40; /* Dark background */
+  --primary-color: #7cf0bd;
+  --secondary-color: #67e0a3;
+  --accent-color: #317b22;
+  --text-dark: #262b30;
+  --text-light: #c6ced6;
+  --background-light: #aff9c9;
+  --background-dark: #2a4d14;
+
+  /* sizes */
+  --small-gap: 10px;
+  --medium: 20px;
+  --large: 50px;
 }
 
 *,
@@ -28,6 +33,7 @@ html {
   /* styling */
   border: 1px solid black;
   border-radius: 20px;
+  background-color: var(--background-light);
 
   /* layout */
   padding: 20px;
