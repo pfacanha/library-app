@@ -16,6 +16,7 @@ function addBookToLibrary(title, author, isRead) {
 
 addBookToLibrary("Harry Potter", "J.K. Rowling", false);
 addBookToLibrary("Harry Potter II", "J.K. Rowling", true);
+addBookToLibrary("Lord of The Rings", "J.R.R Tolkien", true);
 
 function displayBooks() {
   for (let i = 0; i < myLibrary.length; ++i) {
