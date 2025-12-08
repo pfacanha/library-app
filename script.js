@@ -35,6 +35,8 @@ function displayBooks() {
     const line = document.createElement("p");
     line.textContent = `-----------------`;
 
+    currBook.classList = "card";
+
     currBook.append(author, title, isRead);
     viewBooks.append(currBook, line);
   }

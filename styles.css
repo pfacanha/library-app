@@ -52,6 +52,10 @@ h1 {
   justify-content: space-around;
 }
 
+.card {
+  background-color: var(--background-dark);
+  color: text-light;
+}
 #wrapper {
   display: flex;
   flex-direction: column;
