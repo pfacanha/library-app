@@ -15,7 +15,7 @@ function addBookToLibrary(title, author, isRead) {
 }
 
 addBookToLibrary("Harry Potter", "J.K. Rowling", false);
-addBookToLibrary("Harry Potter II", "J.K. Rowling", false);
+addBookToLibrary("Heart of Darkness", "Joseph Conrad", true);
 addBookToLibrary("Lord of The Rings", "J.R.R Tolkien", false);
 
 function displayBooks() {
@@ -32,13 +32,10 @@ function displayBooks() {
     const isRead = document.createElement("p");
     isRead.textContent = `isRead: ${curr.isRead}`;
 
-    const line = document.createElement("p");
-    line.textContent = `-----------------`;
-
     currBook.classList.add("card");
 
     currBook.append(author, title, isRead);
-    viewBooks.append(currBook, line);
+    viewBooks.append(currBook);
   }
 }
 
