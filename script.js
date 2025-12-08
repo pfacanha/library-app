@@ -1,18 +1,36 @@
+// Book collection
 const myLibrary = [];
 
-function Book(title, author, isRead) {
-  this.id = crypto.randomUUID();
-  this.title = title;
-  this.author = author;
-  this.isRead = isRead ? "read" : "not read yet";
+// Book class
+class Book {
+  constructor(title, author, isRead = false) {
+    this.id = crypto.randomUUID();
+    this.title = title;
+    this.author = author;
+    this.isRead = isRead;
+  }
+
+  markAsRead() {
+    this.isRead = true;
+  }
+
+  markAsUnread() {
+    this.isRead = false;
+  }
+
+  get status() {
+    return this.isRead ? "read" : "not read yet";
+  }
 }
 
-function addBookToLibrary(title, author) {
-  const book = new Book(title, author);
+// Add book to library
+function addBookToLibrary(title, author, isRead = false) {
+  const book = new Book(title, author, isRead);
   myLibrary.push(book);
   return book;
 }
 
+// Example usage
 addBookToLibrary("Harry Potter", "J.K. Rowling", false);
 
 console.log(myLibrary);
