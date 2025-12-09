@@ -1,5 +1,7 @@
 const myLibrary = [];
-const viewBooks = document.querySelector(".view");
+const inventory = document.querySelector(".inventory");
+const addBtn = document.querySelector(".add-btn");
+const deleteBtn = document.querySelector(".delete-btn");
 
 function Book(title, author, isRead) {
   this.id = crypto.randomUUID();
@@ -19,7 +21,7 @@ addBookToLibrary("Heart of Darkness", "Joseph Conrad", true);
 addBookToLibrary("Lord of The Rings", "J.R.R Tolkien", false);
 
 function displayBooks() {
-  viewBooks.textContent = "";
+  inventory.textContent = "";
 
   for (let i = 0; i < myLibrary.length; ++i) {
     let curr = myLibrary[i];
@@ -37,8 +39,12 @@ function displayBooks() {
     bookCard.classList.add("card");
 
     bookCard.append(author, title, isRead);
-    viewBooks.append(bookCard);
+    inventory.appendChild(bookCard);
   }
 }
+
+addBtn.addEventListener("click", function () {
+  const form = document.createElement("form");
+});
 
 displayBooks();
