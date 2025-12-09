@@ -47,15 +47,39 @@ function displayBooks() {
 addBtn.addEventListener("click", function () {
   const dialogBox = document.createElement("dialog");
 
-  const paragraph = document.createElement("p");
-  paragraph.textContent = "Hello World!";
+  const form = document.createElement("form");
+  form.setAttribute("method", "dialog");
+  form.classList.add("card");
 
-  const closeBtn = document.createElement("button");
-  closeBtn.textContent = "Close";
-  closeBtn.addEventListener("click", () => dialogBox.close());
+  const titleLabel = document.createElement("label");
+  titleLabel.textContent = "Book Title:";
 
-  dialogBox.append(paragraph, closeBtn);
-  dialogBox.classList.add("card");
+  const authorLabel = document.createElement("label");
+  authorLabel.textContent = "Book Author:";
+
+  const title = document.createElement("input");
+  title.setAttribute("type", "text");
+  title.setAttribute("name", "title");
+  title.setAttribute("placeholder", "Enter the title");
+
+  const author = document.createElement("input");
+  author.setAttribute("type", "text");
+  author.setAttribute("name", "author");
+  author.setAttribute("placeholder", "Enter the author");
+
+  const submitBtn = document.createElement("button");
+  submitBtn.setAttribute("type", "submit");
+  submitBtn.textContent = "Submit";
+
+  const titleDiv = document.createElement("div");
+  const authorDiv = document.createElement("div");
+
+  titleDiv.append(titleLabel, title);
+  authorDiv.append(authorLabel, author);
+
+  form.append(titleDiv, authorDiv, submitBtn);
+
+  dialogBox.append(form);
   addBox.appendChild(dialogBox);
 
   dialogBox.showModal();

@@ -65,8 +65,20 @@ h2 {
   border: 1px solid var(--accent-color);
   box-shadow: 10px 5px 5px var(--background-dark);
 
-  margin: var(--space-5);
   padding: var(--space-3);
+}
+form > div {
+  display: flex;
+
+  gap: 10px;
+}
+
+form input {
+  flex: 1;
+}
+
+form button {
+  margin-left: auto;
 }
 
 .inventory {
