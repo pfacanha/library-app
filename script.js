@@ -1,8 +1,7 @@
-const myLibrary = [];
+let myLibrary = [];
 
 const inventory = document.querySelector(".inventory");
-const addBtn = document.querySelector(".add-btn");
-const deleteBtn = document.querySelector(".delete-btn");
+const btn = document.querySelector(".btn");
 const addBox = document.querySelector(".add-box");
 
 function Book(title, author, isRead) {
@@ -18,7 +17,7 @@ function addBookToLibrary(title, author, isRead) {
   return book;
 }
 
-function displayBooks() {
+function displayInventory() {
   inventory.textContent = "";
 
   for (let i = 0; i < myLibrary.length; ++i) {
@@ -34,14 +33,20 @@ function displayBooks() {
     const isRead = document.createElement("p");
     isRead.textContent = `isRead: ${curr.isRead}`;
 
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.classList.add("btn");
+
     bookCard.classList.add("card");
 
-    bookCard.append(author, title, isRead);
+    bookCard.append(author, title, isRead, deleteBtn);
     inventory.appendChild(bookCard);
+
+    console.log(curr.id);
   }
 }
 
-addBtn.addEventListener("click", function () {
+btn.addEventListener("click", function () {
   const dialogBox = document.createElement("dialog");
 
   const form = document.createElement("form");
@@ -91,6 +96,6 @@ addBtn.addEventListener("click", function () {
 
     dialogBox.close();
 
-    displayBooks();
+    displayInventory();
   });
 });

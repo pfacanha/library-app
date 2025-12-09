@@ -78,6 +78,12 @@ form button {
   justify-content: space-around;
 }
 
+.add-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .card {
   background-color: var(--secondary-color);
   color: var(--text-dark);
@@ -95,8 +101,7 @@ form button {
   gap: var(--space-2);
 }
 
-.add-btn,
-.delete-btn {
+.btn {
   background-color: white;
   border-radius: var(--radius-sm);
   border: 1px solid var(--accent-color);
