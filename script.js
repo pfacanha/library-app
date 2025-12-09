@@ -1,4 +1,4 @@
-const myLibrary = [];
+const library = [];
 
 const inventory = document.querySelector(".inventory");
 const btn = document.querySelector(".btn");
@@ -13,7 +13,7 @@ function Book(title, author, isRead) {
 
 function addBookToLibrary(title, author, isRead) {
   const book = new Book(title, author, isRead);
-  myLibrary.push(book);
+  library.push(book);
   return book;
 }
 
@@ -64,20 +64,21 @@ btn.addEventListener("click", function () {
     const author = authorInput.value;
 
     addBookToLibrary(title, author, false);
+    updateInventory();
 
     dialogBox.close();
-
-    createCard();
   });
 });
 
-function createCard() {
+function updateInventory() {
   inventory.textContent = "";
 
-  for (let i = 0; i < myLibrary.length; ++i) {
-    let currentBook = myLibrary[i];
+  for (let i = 0; i < library.length; ++i) {
+    let currentBook = library[i];
+
     let card = document.createElement("div");
-    card.setAttribute("data-id", i + 1);
+    card.setAttribute("data-id", i);
+    card.classList.add("card");
 
     const title = document.createElement("p");
     title.textContent = currentBook.title;
@@ -86,10 +87,23 @@ function createCard() {
     author.textContent = currentBook.author;
 
     const read = document.createElement("p");
-    read.textContent = currentBook.isRead ? "read" : "not read yet";
+    read.textContent = currentBook.isRead;
 
-    card.append(title, author, read);
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+
+    deleteBtn.addEventListener("click", function () {
+      const id = card.dataset.id;
+      handleDelete(id);
+      updateInventory();
+    });
+
+    card.append(title, author, read, deleteBtn);
 
     inventory.appendChild(card);
   }
+}
+
+function handleDelete(id) {
+  return library.splice(Number(id), 1);
 }
