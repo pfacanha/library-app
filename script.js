@@ -46,11 +46,19 @@ function displayBooks() {
 
 addBtn.addEventListener("click", function () {
   const dialogBox = document.createElement("dialog");
-  const paragraph = document.createElement("p");
 
+  const paragraph = document.createElement("p");
   paragraph.textContent = "Hello World!";
-  dialogBox.appendChild(paragraph);
+
+  const closeBtn = document.createElement("button");
+  closeBtn.textContent = "Close";
+  closeBtn.addEventListener("click", () => dialogBox.close());
+
+  dialogBox.append(paragraph, closeBtn);
+  dialogBox.classList.add("card");
   addBox.appendChild(dialogBox);
+
+  dialogBox.showModal();
 });
 
 displayBooks();
