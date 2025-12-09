@@ -2,6 +2,7 @@ const myLibrary = [];
 const inventory = document.querySelector(".inventory");
 const addBtn = document.querySelector(".add-btn");
 const deleteBtn = document.querySelector(".delete-btn");
+const addBox = document.querySelector(".add-box");
 
 function Book(title, author, isRead) {
   this.id = crypto.randomUUID();
@@ -44,7 +45,12 @@ function displayBooks() {
 }
 
 addBtn.addEventListener("click", function () {
-  const form = document.createElement("form");
+  const dialogBox = document.createElement("dialog");
+  const paragraph = document.createElement("p");
+
+  paragraph.textContent = "Hello World!";
+  dialogBox.appendChild(paragraph);
+  addBox.appendChild(dialogBox);
 });
 
 displayBooks();
