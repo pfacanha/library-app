@@ -1,4 +1,4 @@
-let myLibrary = [];
+const myLibrary = [];
 
 const inventory = document.querySelector(".inventory");
 const btn = document.querySelector(".btn");
@@ -15,35 +15,6 @@ function addBookToLibrary(title, author, isRead) {
   const book = new Book(title, author, isRead);
   myLibrary.push(book);
   return book;
-}
-
-function displayInventory() {
-  inventory.textContent = "";
-
-  for (let i = 0; i < myLibrary.length; ++i) {
-    let curr = myLibrary[i];
-    const bookCard = document.createElement("div");
-
-    const author = document.createElement("p");
-    author.textContent = `Author: ${curr.author}`;
-
-    const title = document.createElement("p");
-    title.textContent = `Title: ${curr.title}`;
-
-    const isRead = document.createElement("p");
-    isRead.textContent = `isRead: ${curr.isRead}`;
-
-    const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "Delete";
-    deleteBtn.classList.add("btn");
-
-    bookCard.classList.add("card");
-
-    bookCard.append(author, title, isRead, deleteBtn);
-    inventory.appendChild(bookCard);
-
-    console.log(curr.id);
-  }
 }
 
 btn.addEventListener("click", function () {
@@ -96,6 +67,29 @@ btn.addEventListener("click", function () {
 
     dialogBox.close();
 
-    displayInventory();
+    createCard();
   });
 });
+
+function createCard() {
+  inventory.textContent = "";
+
+  for (let i = 0; i < myLibrary.length; ++i) {
+    let currentBook = myLibrary[i];
+    let card = document.createElement("div");
+    card.setAttribute("data-id", i + 1);
+
+    const title = document.createElement("p");
+    title.textContent = currentBook.title;
+
+    const author = document.createElement("p");
+    author.textContent = currentBook.author;
+
+    const read = document.createElement("p");
+    read.textContent = currentBook.isRead ? "read" : "not read yet";
+
+    card.append(title, author, read);
+
+    inventory.appendChild(card);
+  }
+}
