@@ -52,6 +52,27 @@ h2 {
   text-align: center;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+form > div {
+  display: flex;
+
+  gap: 10px;
+}
+
+form input {
+  flex: 1;
+}
+
+form button {
+  margin-left: auto;
+}
+
 .innerbox {
   display: flex;
   justify-content: space-around;
@@ -66,19 +87,6 @@ h2 {
   box-shadow: 10px 5px 5px var(--background-dark);
 
   padding: var(--space-3);
-}
-form > div {
-  display: flex;
-
-  gap: 10px;
-}
-
-form input {
-  flex: 1;
-}
-
-form button {
-  margin-left: auto;
 }
 
 .inventory {

@@ -1,4 +1,5 @@
 const myLibrary = [];
+
 const inventory = document.querySelector(".inventory");
 const addBtn = document.querySelector(".add-btn");
 const deleteBtn = document.querySelector(".delete-btn");
@@ -16,10 +17,6 @@ function addBookToLibrary(title, author, isRead) {
   myLibrary.push(book);
   return book;
 }
-
-addBookToLibrary("Harry Potter", "J.K. Rowling", false);
-addBookToLibrary("Heart of Darkness", "Joseph Conrad", true);
-addBookToLibrary("Lord of The Rings", "J.R.R Tolkien", false);
 
 function displayBooks() {
   inventory.textContent = "";
@@ -57,15 +54,15 @@ addBtn.addEventListener("click", function () {
   const authorLabel = document.createElement("label");
   authorLabel.textContent = "Book Author:";
 
-  const title = document.createElement("input");
-  title.setAttribute("type", "text");
-  title.setAttribute("name", "title");
-  title.setAttribute("placeholder", "Enter the title");
+  const titleInput = document.createElement("input");
+  titleInput.setAttribute("type", "text");
+  titleInput.setAttribute("name", "title");
+  titleInput.setAttribute("placeholder", "Enter the title");
 
-  const author = document.createElement("input");
-  author.setAttribute("type", "text");
-  author.setAttribute("name", "author");
-  author.setAttribute("placeholder", "Enter the author");
+  const authorInput = document.createElement("input");
+  authorInput.setAttribute("type", "text");
+  authorInput.setAttribute("name", "author");
+  authorInput.setAttribute("placeholder", "Enter the author");
 
   const submitBtn = document.createElement("button");
   submitBtn.setAttribute("type", "submit");
@@ -74,8 +71,8 @@ addBtn.addEventListener("click", function () {
   const titleDiv = document.createElement("div");
   const authorDiv = document.createElement("div");
 
-  titleDiv.append(titleLabel, title);
-  authorDiv.append(authorLabel, author);
+  titleDiv.append(titleLabel, titleInput);
+  authorDiv.append(authorLabel, authorInput);
 
   form.append(titleDiv, authorDiv, submitBtn);
 
@@ -83,6 +80,17 @@ addBtn.addEventListener("click", function () {
   addBox.appendChild(dialogBox);
 
   dialogBox.showModal();
-});
 
-displayBooks();
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const title = titleInput.value;
+    const author = authorInput.value;
+
+    addBookToLibrary(title, author, false);
+
+    dialogBox.close();
+
+    displayBooks();
+  });
+});
