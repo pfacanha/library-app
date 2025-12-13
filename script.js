@@ -17,6 +17,10 @@ function addBookToLibrary(title, author, isRead) {
   return book;
 }
 
+Book.prototype.toggleRead = function () {
+  return !this.isRead;
+};
+
 btn.addEventListener("click", function () {
   const dialogBox = document.createElement("dialog");
 
@@ -93,10 +97,18 @@ function renderInventory() {
     deleteBtn.textContent = "Delete";
     deleteBtn.classList.add("btn");
 
+    const toggleBtn = document.createElement("button");
+    toggleBtn.textContent = "Toggle Read";
+    toggleBtn.classList.add("btn");
+
     deleteBtn.addEventListener("click", function () {
       const id = card.dataset.id;
       handleDelete(id);
       renderInventory();
+    });
+
+    toggleBtn.addEventListener("click", function () {
+      currentBook.toggleBtn();
     });
 
     card.append(title, author, read, deleteBtn);
