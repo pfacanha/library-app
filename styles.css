@@ -78,7 +78,7 @@ form button {
   justify-content: space-around;
 }
 
-.add-box {
+.box {
   display: flex;
   flex-direction: column;
   align-items: center;

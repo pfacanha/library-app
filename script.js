@@ -2,7 +2,7 @@ const library = [];
 
 const inventory = document.querySelector(".inventory");
 const btn = document.querySelector(".btn");
-const addBox = document.querySelector(".add-box");
+const box = document.querySelector(".box");
 
 function Book(title, author, isRead) {
   this.id = crypto.randomUUID();
@@ -53,7 +53,7 @@ btn.addEventListener("click", function () {
   form.append(titleDiv, authorDiv, submitBtn);
 
   dialogBox.append(form);
-  addBox.appendChild(dialogBox);
+  box.appendChild(dialogBox);
 
   dialogBox.showModal();
 
@@ -64,20 +64,20 @@ btn.addEventListener("click", function () {
     const author = authorInput.value;
 
     addBookToLibrary(title, author, false);
-    updateInventory();
+    renderInventory();
 
     dialogBox.close();
   });
 });
 
-function updateInventory() {
+function renderInventory() {
   inventory.textContent = "";
 
   for (let i = 0; i < library.length; ++i) {
     let currentBook = library[i];
 
     let card = document.createElement("div");
-    card.setAttribute("data-id", i);
+    card.dataset.id = i;
     card.classList.add("card");
 
     const title = document.createElement("p");
@@ -91,11 +91,12 @@ function updateInventory() {
 
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
+    deleteBtn.classList.add("btn");
 
     deleteBtn.addEventListener("click", function () {
       const id = card.dataset.id;
       handleDelete(id);
-      updateInventory();
+      renderInventory();
     });
 
     card.append(title, author, read, deleteBtn);
@@ -105,5 +106,5 @@ function updateInventory() {
 }
 
 function handleDelete(id) {
-  return library.splice(Number(id), 1);
+  library.splice(Number(id), 1);
 }
