@@ -8,7 +8,7 @@ function Book(title, author, isRead) {
   this.id = crypto.randomUUID();
   this.title = title;
   this.author = author;
-  this.isRead = isRead ? "read" : "not read yet";
+  this.isRead = isRead;
 }
 
 function addBookToLibrary(title, author, isRead) {
@@ -18,7 +18,7 @@ function addBookToLibrary(title, author, isRead) {
 }
 
 Book.prototype.toggleRead = function () {
-  return !this.isRead;
+  this.isRead = !this.isRead;
 };
 
 btn.addEventListener("click", function () {
@@ -91,7 +91,7 @@ function renderInventory() {
     author.textContent = currentBook.author;
 
     const read = document.createElement("p");
-    read.textContent = currentBook.isRead;
+    read.textContent = currentBook.isRead ? "read" : "not read yet";
 
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
@@ -108,10 +108,11 @@ function renderInventory() {
     });
 
     toggleBtn.addEventListener("click", function () {
-      currentBook.toggleBtn();
+      currentBook.toggleRead();
+      renderInventory();
     });
 
-    card.append(title, author, read, deleteBtn);
+    card.append(title, author, read, deleteBtn, toggleBtn);
 
     inventory.appendChild(card);
   }
