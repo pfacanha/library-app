@@ -1,9 +1,6 @@
-const library = [];
-
-const inventory = document.querySelector(".inventory");
-const btn = document.querySelector(".btn");
-const box = document.querySelector(".box");
-
+// =======================
+// Book Class
+// =======================
 class Book {
   constructor({ title, author, isRead }) {
     this.id = crypto.randomUUID();
@@ -12,21 +9,27 @@ class Book {
     this.isRead = isRead;
   }
 
-  addBookToLibrary(title, author, isRead) {
-    this.book = {
-      title,
-      author,
-      isRead,
-    };
-    library.push(book);
-    return book;
+  toggleRead() {
+    this.isRead = !this.isRead;
   }
 }
 
-Book.prototype.toggleRead = function () {
-  this.isRead = !this.isRead;
-};
+// =======================
+// Library State
+// =======================
+const library = [];
 
+// =======================
+// Add Book Helper
+// =======================
+function addBookToLibrary(title, author, isRead) {
+  const book = new Book({ title, author, isRead });
+  library.push(book);
+}
+
+// =======================
+// Button / Dialog Logic
+// =======================
 btn.addEventListener("click", function () {
   const dialogBox = document.createElement("dialog");
 
@@ -41,17 +44,17 @@ btn.addEventListener("click", function () {
   authorLabel.textContent = "Book Author:";
 
   const titleInput = document.createElement("input");
-  titleInput.setAttribute("type", "text");
-  titleInput.setAttribute("name", "title");
-  titleInput.setAttribute("placeholder", "Enter the title");
+  titleInput.type = "text";
+  titleInput.name = "title";
+  titleInput.placeholder = "Enter the title";
 
   const authorInput = document.createElement("input");
-  authorInput.setAttribute("type", "text");
-  authorInput.setAttribute("name", "author");
-  authorInput.setAttribute("placeholder", "Enter the author");
+  authorInput.type = "text";
+  authorInput.name = "author";
+  authorInput.placeholder = "Enter the author";
 
   const submitBtn = document.createElement("button");
-  submitBtn.setAttribute("type", "submit");
+  submitBtn.type = "submit";
   submitBtn.textContent = "Submit";
 
   const titleDiv = document.createElement("div");
@@ -61,7 +64,6 @@ btn.addEventListener("click", function () {
   authorDiv.append(authorLabel, authorInput);
 
   form.append(titleDiv, authorDiv, submitBtn);
-
   dialogBox.append(form);
   box.appendChild(dialogBox);
 
@@ -70,8 +72,10 @@ btn.addEventListener("click", function () {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const title = titleInput.value;
-    const author = authorInput.value;
+    const title = titleInput.value.trim();
+    const author = authorInput.value.trim();
+
+    if (!title || !author) return;
 
     addBookToLibrary(title, author, false);
     renderInventory();
@@ -80,14 +84,15 @@ btn.addEventListener("click", function () {
   });
 });
 
+// =======================
+// Render Inventory
+// =======================
 function renderInventory() {
   inventory.textContent = "";
 
-  for (let i = 0; i < library.length; ++i) {
-    let currentBook = library[i];
-
-    let card = document.createElement("div");
-    card.dataset.id = i;
+  library.forEach((currentBook, index) => {
+    const card = document.createElement("div");
+    card.dataset.id = index;
     card.classList.add("card");
 
     const title = document.createElement("p");
@@ -108,8 +113,7 @@ function renderInventory() {
     toggleBtn.classList.add("btn");
 
     deleteBtn.addEventListener("click", function () {
-      const id = card.dataset.id;
-      handleDelete(id);
+      handleDelete(index);
       renderInventory();
     });
 
@@ -119,11 +123,13 @@ function renderInventory() {
     });
 
     card.append(title, author, read, deleteBtn, toggleBtn);
-
     inventory.appendChild(card);
-  }
+  });
 }
 
+// =======================
+// Delete Handler
+// =======================
 function handleDelete(id) {
-  library.splice(Number(id), 1);
+  library.splice(id, 1);
 }
