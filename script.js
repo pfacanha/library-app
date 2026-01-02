@@ -4,17 +4,23 @@ const inventory = document.querySelector(".inventory");
 const btn = document.querySelector(".btn");
 const box = document.querySelector(".box");
 
-function Book(title, author, isRead) {
-  this.id = crypto.randomUUID();
-  this.title = title;
-  this.author = author;
-  this.isRead = isRead;
-}
+class Book {
+  constructor({ title, author, isRead }) {
+    this.id = crypto.randomUUID();
+    this.title = title;
+    this.author = author;
+    this.isRead = isRead;
+  }
 
-function addBookToLibrary(title, author, isRead) {
-  const book = new Book(title, author, isRead);
-  library.push(book);
-  return book;
+  addBookToLibrary(title, author, isRead) {
+    this.book = {
+      title,
+      author,
+      isRead,
+    };
+    library.push(book);
+    return book;
+  }
 }
 
 Book.prototype.toggleRead = function () {
