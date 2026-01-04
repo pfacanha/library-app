@@ -30,6 +30,9 @@ function addBookToLibrary(title, author, isRead) {
 // =======================
 // Button / Dialog Logic
 // =======================
+const btn = document.querySelector(".btn");
+const box = document.querySelector(".box");
+
 btn.addEventListener("click", function () {
   const dialogBox = document.createElement("dialog");
 
@@ -87,6 +90,8 @@ btn.addEventListener("click", function () {
 // =======================
 // Render Inventory
 // =======================
+const inventory = document.querySelector(".inventory");
+
 function renderInventory() {
   inventory.textContent = "";
 
